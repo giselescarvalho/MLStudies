@@ -27,3 +27,58 @@ print(df.dropna(thresh=2)) # especificando quantos valores Nao Missing que uma l
 #
 #  Print out the shape of the subset
 #   print(volunteer_subset.shape)
+
+
+# Working With DataTypes
+
+print(df.info())
+df["C"] = df["C"].astype("float") #astype converte o tipo de dado de uma coluna para um tipo específico
+print(df.dtypes) # dtype: object
+
+### 3 
+##  quais tipo contem em volunteer?
+#   print(volunteer.info())
+
+
+### 4
+## Print the head of the hits column
+#   print(volunteer["hits"].head())
+#
+#  Convert the hits column to type int
+#   volunteer["hits"] = volunteer["hits"].astype("int")
+#
+#  Look at the dtypes of the dataset
+#   print(volunteer.dtypes)
+
+
+# Training and testsets
+
+from sklearn.model_selection import train_test_split # Importa a função para dividir os dados em conjuntos de treinamento e teste
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) # Divide os dados em treino (80%) e teste (20%)
+
+X_train,X_test,y_train,y_test = train_test_split(X, y, stratify=y, random_state=42) # stratified sampling # Divide os dados preservando a proporção das classes (amostragem estratificada)
+y["labels"].value_counts()       # Exibe a quantidade de registros em cada classe da variável alvo
+y_train["labels"].value_counts() # Exibe a quantidade de amostras de cada classe no conjunto de treinamento
+y_test["labels"].value_counts()   # Exibe a quantidade de amostras de cada classe no conjunto de teste
+
+### 5
+##  Quais descrições ocorrem menos de 50 vezes no conjunto de dados volunteer?
+#    volunteer["category_desc"].value_counts()
+
+### 6
+## from sklearn.model_selection import train_test_split
+# Create a DataFrame with all columns except category_desc
+# X = volunteer.drop("category_desc", axis=1)
+#
+# Create a category_desc labels dataset
+# Em aprendizado de máquina, normalmente:
+#  X = atributos (features)
+#  y = rótulo/variável-alvo (target)
+# y = volunteer[["category_desc"]]
+#
+# Use stratified sampling to split up the dataset according to the y dataset
+# X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
+#
+# Print the category_desc counts from y_train
+# print(y_train["category_desc"].value_counts())
