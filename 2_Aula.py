@@ -82,3 +82,47 @@ print(df_scaled.var()) #agora a variancia é a mesma para todas as colunas
 #    scaler.fit_transform(wine_subset),
 #    columns=wine_subset.columns
 #)
+
+
+# ------------------ #
+# K-nearest neighbors
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
+knn = KNeighborsClassifier()
+scaler = StandardScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+knn.fit(X_train_scaled, y_train)
+knn.score(X_test_scaled, y_test)
+
+### 6
+##  KNN com dados não escalonados
+#  Split the dataset and labels into training and test sets
+#   X_train, X_test, y_train, y_test = train_test_split(X, y,  stratify=y, random_state=42)
+# 
+#  Fit the k-nearest neighbors model to the training data
+#   knn.fit(X_train, y_train)
+# 
+#  Score the model on the test data
+#   print(knn.score(X_test, y_test))
+
+### 7
+##  KNN com dados escalados
+# X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
+#
+## Instantiate a StandardScaler
+#scaler = StandardScaler()
+#
+## Scale the training and test features
+#X_train_scaled = scaler.fit_transform(X_train)
+#X_test_scaled = scaler.transform(X_test)
+#
+## Fit the k-nearest neighbors model to the training data
+#knn.fit(X_train_scaled, y_train)
+#
+## Score the model on the test data
+#print(knn.score(X_test_scaled, y_test))
