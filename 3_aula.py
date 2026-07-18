@@ -104,3 +104,16 @@ text_tfidf = tfidf_vec.fit_transform(documents)
 #
 ## Transform the text into tf-idf vectors
 #text_tfidf = tfidf_vec.fit_transform(title_text)
+
+### 7
+## Classificação de texto usando vetores tf/idf
+# Split the dataset according to the class distribution of category_desc
+# y = volunteer["category_desc"]            # variável alvo que queremos prever
+# X_train, X_test, y_train, y_test = train_test_split(text_tfidf.toarray(), y, stratify=y, random_state=42)
+#                                            # text_tfidf.toarray(): São os seus dados textuais transformados em números
+#                                            # stratify=y Garante que a proporção das respostas seja igual no treino e  teste. Se a sua base original tem 10% de clientes que cancelaram o serviço, o treino e o teste também terão exatamente 10% de cancelamentos.
+# # Fit the model to the training data
+# nb.fit(X_train, y_train)                   # o algoritmo Naive Bayes, bom para classificar textos
+# 
+# # Print out the model's accuracy
+# print(nb.score(X_test, y_test))           # .score(...) avalia a qualidade do modelo
